@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Catalog - High Class UI</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Include Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/script.js"></script> <!-- Heroicons CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-white">  <!-- Updated body background -->
+    <div id="header-container"></div> <!-- Header will be loaded here -->
+
+
+    
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Explore Our Courses</h1>
+        
+        <div id="courses-container" class="flex flex-wrap  gap-4">
+            <!-- Course cards will be inserted here -->
+        </div>
+    </main>
+
+    <div id="footer-container"></div> <!-- Footer will be loaded here -->
+
+    <script type="module" src="./js/index.js"></script>
+    <script>
+        // Function to load HTML components
+        async function loadComponent(path, containerId) {
+            const response = await fetch(path);
+            const text = await response.text();
+            document.getElementById(containerId).innerHTML = text;
+        }
+
+        // Load header and footer
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponent('header.html', 'header-container');
+            loadComponent('footer.html', 'footer-container');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Viewer - High Class UI</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Include Tailwind CSS -->
+    <style>
+        body {
+            font-family: 'sans-serif'; /* Or choose a more specific professional font */
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white">
+    <div id="header-container"></div> <!-- Header -->
+
+    <main class="container mx-auto px-4 py-8">
+        <div id="lesson-viewer-container" class="bg-gray-700 rounded-lg shadow-md p-8"> <!-- Darker background for lesson container -->
+            <h2 id="viewer-title" class="text-3xl font-bold mb-6 text-purple-500"></h2>
+            <div id="lesson-content" class="text-gray-300">
+                <!-- Lesson content sections will be rendered here -->
+            </div>
+            <a href="./index.html" class="inline-block mt-8 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">
+                Back to Catalog
+            </a>
+        </div>
+    </main>
+
+    <div id="footer-container"></div> <!-- Footer -->
+
+    <script type="module" src="./js/lesson-viewer.js"></script>
+    <script>
+        // Function to load HTML components (same as in index.html)
+        async function loadComponent(path, containerId) {
+            const response = await fetch(path);
+            const text = await response.text();
+            document.getElementById(containerId).innerHTML = text;
+        }
+
+        // Load header and footer
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponent('header.html', 'header-container');
+            loadComponent('footer.html', 'footer-container');
+        });
+    </script>
+</body>
+</html>

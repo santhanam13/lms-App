@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_default_lesson_sections",
+  "info": {
+    "displayName": "lessonSection"
+  },
+  "options": {},
+  "attributes": {
+    "Heading": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "blocks"
+    }
+  }
+}
