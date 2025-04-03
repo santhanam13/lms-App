@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         courses.forEach(course => {
             const courseCard = document.createElement('div');
-            courseCard.className = 'cursor-pointer border border-gray-200 w-auto lg:w-96 rounded-lg overflow-hidden hover:shadow-2xl hover:bg-gray-50 transition-all duration-300';
+            courseCard.className = 'cursor-pointer border border-gray-200 w-auto lg:w-96 rounded-lg overflow-hidden hover:shadow-2xl bg-gray-50 hover:bg-gray-50 transition-all duration-300';
             
             // Card header with category badge
             const cardHeader = document.createElement('div');
@@ -126,3 +126,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
     document.head.appendChild(fontAwesome);
 });
+
+
+// <script>
+// // Function to load HTML components
+// async function loadComponent(path, containerId) {
+//     try {
+//         const response = await fetch(path);
+//         const text = await response.text();
+//         document.getElementById(containerId).innerHTML = text;
+//     } catch (error) {
+//         console.error(`Error loading component ${path}:`, error);
+//     }
+// }
+
+// // Load header and footer
+// document.addEventListener('DOMContentLoaded', () => {
+//     loadComponent('header.html', 'header-container');
+//     loadComponent('footer.html', 'footer-container');
+    
+//     // Continue with course loading
+//     loadCourseDetails();
+// });
+// </script>

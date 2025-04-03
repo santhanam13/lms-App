@@ -3,6 +3,8 @@ import { getLessonDetail } from '../api/api-call.js'; // Adjust the import path 
 document.addEventListener('DOMContentLoaded', async () => {
     const lessonTitleElement = document.getElementById('viewer-title');
     const lessonContentContainer = document.getElementById('lesson-content');
+    const durationTime = document.getElementById('duration');
+
 
     const urlParams = new URLSearchParams(window.location.search);
     const lessonId = urlParams.get('id');
@@ -18,10 +20,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const lesson = lessonData.data;
 
         lessonTitleElement.textContent = lesson.Title;
+        durationTime.textContent = lesson.Duration ? `${lesson.Duration} minutes` : 'Duration not available';
 
         if (lesson.Sections && lesson.Sections.length > 0) {
             lesson.Sections.forEach(section => {
                 const sectionDiv = document.createElement('div');
+                
                 sectionDiv.className = 'mb-8'; // Increased margin for section spacing
 
                 const headingElement = document.createElement('h3');
