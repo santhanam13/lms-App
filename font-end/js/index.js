@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             descriptionIcon.innerHTML = '<i class="fas fa-info-circle"></i>';
             
             const descriptionSnippet = document.createElement('p');
-            descriptionSnippet.className = 'text-gray-600  h- 2 0 text-sm leading-relaxed';
+            descriptionSnippet.className = 'text-gray-600  h-24 text-sm leading-relaxed';
             
             if (course.Description && course.Description.length > 0 && course.Description[0].children && course.Description[0].children.length > 0) {
                 descriptionSnippet.textContent = course.Description[0].children[0].text.substring(0, 200) + '...';

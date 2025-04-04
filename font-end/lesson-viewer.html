@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson Viewer - Modern Design</title>
+    <title>Lesson Viewer </title>
     <script src="https://cdn.tailwindcss.com"></script> <!-- Include Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/script.js"></script> <!-- Heroicons CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .custom-shadow {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
+
         .container {
             background-color: #9C9C9C;
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' %3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23FFFFFF'/%3E%3Cstop offset='1' stop-color='%23FFFFFF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpattern id='b' width='16' height='16' patternUnits='userSpaceOnUse'%3E%3Ccircle fill='%239C9C9C' cx='8' cy='8' r='8'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)' fill-opacity='0.08'/%3E%3C/svg%3E");
-background-attachment: fixed;
-width: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' %3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23FFFFFF'/%3E%3Cstop offset='1' stop-color='%23FFFFFF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpattern id='b' width='16' height='16' patternUnits='userSpaceOnUse'%3E%3Ccircle fill='%239C9C9C' cx='8' cy='8' r='8'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)' fill-opacity='0.08'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            width: 100%;
         }
+
         .progress-bar {
             height: 6px;
             background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
             border-radius: 3px;
         }
+
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
+
         .bg-dots {
             background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
             background-size: 20px 20px;
         }
+
         .section-animate {
             transition: all 0.3s ease;
         }
+
         .section-animate:hover {
             background-color: #f8fafc;
         }
     </style>
 </head>
+
 <body class="bg-white text-gray-800 font-sans">
     <div id="header-container"></div> <!-- Header -->
 
@@ -49,7 +61,7 @@ width: 100%;
         <div class="absolute top-0 left-0 w-full h-64 bg-dots opacity-50"></div>
         <div class="absolute -bottom-24 -right-24 w-64 h-64 rounded-full bg-green-100 opacity-50"></div>
         <div class="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-blue-100 opacity-40"></div>
-        
+
         <div class="  mx-auto px-4 relative z-10">
             <div class="flex items-center justify-between">
                 <div>
@@ -57,23 +69,25 @@ width: 100%;
                     <div class="flex items-center mt-2">
                         <div class="flex items-center mr-4">
                             <i class="fas fa-clock text-green-500 mr-2"></i>
-                            <p class="text-sm text-gray-600">Estimated time:  <span id="duration"></span></p>
+                            <p class="text-sm text-gray-600">Estimated time: <span id="duration"></span></p>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="flex items-center space-x-3">
-                        <button class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg transition-colors flex items-center">
+                        <button
+                            class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg transition-colors flex items-center">
                             <i class="fas fa-bookmark mr-2"></i> Save
                         </button>
-                        <button class="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg transition-colors flex items-center">
+                        <button
+                            class="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg transition-colors flex items-center">
                             <i class="fas fa-play mr-2"></i> Start Learning
                         </button>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Progress tracking -->
             <div class="mt-6 bg-white p-4 rounded-lg shadow-sm max-w-3xl">
                 <div class="flex justify-between text-sm text-gray-600 mb-2">
@@ -90,8 +104,8 @@ width: 100%;
     <!-- Main content -->
     <main class="container mx-auto px-4 py-12 relative z-10">
         <div class="max-w-5xl mx-auto">
-           
-            
+
+
             <!-- Lesson viewer card -->
             <div id="lesson-viewer-container" class="bg-white rounded-xl custom-shadow p-8 border border-gray-100">
                 <div class="flex justify-between items-start mb-8">
@@ -108,7 +122,7 @@ width: 100%;
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Table of contents -->
                 <div class="mb-8 p-4 bg-gray-50 rounded-lg">
                     <h3 class="font-semibold text-gray-700 mb-3 flex items-center">
@@ -117,25 +131,31 @@ width: 100%;
                     <div id="toc-container" class="pl-6">
                         <!-- Will be populated dynamically -->
                         <div class="flex items-center py-2">
-                            <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white text-xs mr-3">1</div>
+                            <div
+                                class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white text-xs mr-3">
+                                1</div>
                             <a href="#section-1" class="text-gray-700 hover:text-green-600">Introduction</a>
                         </div>
                         <div class="flex items-center py-2">
-                            <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-xs mr-3">2</div>
+                            <div
+                                class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-xs mr-3">
+                                2</div>
                             <a href="#section-2" class="text-gray-700 hover:text-green-600">Core Concepts</a>
                         </div>
                         <div class="flex items-center py-2">
-                            <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-xs mr-3">3</div>
+                            <div
+                                class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-xs mr-3">
+                                3</div>
                             <a href="#section-3" class="text-gray-700 hover:text-green-600">Implementation</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Lesson content -->
                 <div id="lesson-content" class="text-gray-700 leading-relaxed">
                     <!-- Lesson content sections will be rendered here -->
                 </div>
-                
+
                 <!-- Navigation buttons -->
                 <div class="mt-12 border-t border-gray-100 pt-6 flex justify-between items-center">
                     <a href="#" class="flex items-center text-gray-600 hover:text-green-600 transition-colors">
@@ -143,21 +163,24 @@ width: 100%;
                         Previous Lesson
                     </a>
                     <div class="flex space-x-3">
-                        <a href="./index.html" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+                        <a href="./index.html"
+                            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors">
                             <i class="fas fa-th-large mr-2"></i> Catalog
                         </a>
-                        <a href="#" class="inline-flex items-center px-5 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 transition-colors">
+                        <a href="#"
+                            class="inline-flex items-center px-5 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 transition-colors">
                             Next Lesson <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Additional learning resources -->
             <div class="mt-12">
                 <h3 class="text-xl font-bold text-gray-800 mb-6">Additional Resources</h3>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 card-hover transition-all duration-300">
+                    <div
+                        class="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 card-hover transition-all duration-300">
                         <div class="h-3 bg-green-500"></div>
                         <div class="p-5">
                             <div class="text-green-500 mb-2">
@@ -165,12 +188,14 @@ width: 100%;
                             </div>
                             <h4 class="font-semibold text-gray-800 mb-1">Complete Cheatsheet</h4>
                             <p class="text-sm text-gray-500 mb-3">Quick reference guide for all key concepts</p>
-                            <a href="#" class="text-sm text-green-600 hover:text-green-700 font-medium flex items-center">
+                            <a href="#"
+                                class="text-sm text-green-600 hover:text-green-700 font-medium flex items-center">
                                 Download PDF <i class="fas fa-download ml-1"></i>
                             </a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 card-hover transition-all duration-300">
+                    <div
+                        class="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 card-hover transition-all duration-300">
                         <div class="h-3 bg-blue-500"></div>
                         <div class="p-5">
                             <div class="text-blue-500 mb-2">
@@ -178,12 +203,14 @@ width: 100%;
                             </div>
                             <h4 class="font-semibold text-gray-800 mb-1">Practical Examples</h4>
                             <p class="text-sm text-gray-500 mb-3">Video walkthrough with code examples</p>
-                            <a href="#" class="text-sm text-green-600 hover:text-green-700 font-medium flex items-center">
+                            <a href="#"
+                                class="text-sm text-green-600 hover:text-green-700 font-medium flex items-center">
                                 Watch Video <i class="fas fa-play ml-1"></i>
                             </a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 card-hover transition-all duration-300">
+                    <div
+                        class="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 card-hover transition-all duration-300">
                         <div class="h-3 bg-purple-500"></div>
                         <div class="p-5">
                             <div class="text-purple-500 mb-2">
@@ -191,14 +218,15 @@ width: 100%;
                             </div>
                             <h4 class="font-semibold text-gray-800 mb-1">Practice Exercises</h4>
                             <p class="text-sm text-gray-500 mb-3">Apply what you've learned with challenges</p>
-                            <a href="#" class="text-sm text-green-600 hover:text-green-700 font-medium flex items-center">
+                            <a href="#"
+                                class="text-sm text-green-600 hover:text-green-700 font-medium flex items-center">
                                 Start Exercises <i class="fas fa-arrow-right ml-1"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Community discussion -->
             <div class="mt-12 bg-white rounded-xl custom-shadow p-8 border border-gray-100">
                 <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
@@ -210,15 +238,18 @@ width: 100%;
                             <i class="fas fa-user text-gray-400"></i>
                         </div>
                         <div class="flex-1">
-                            <textarea class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Ask a question or share your thoughts..."></textarea>
+                            <textarea
+                                class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                placeholder="Ask a question or share your thoughts..."></textarea>
                             <div class="mt-3 flex justify-end">
-                                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                <button
+                                    class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors text-sm">
                                     Post Comment
                                 </button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="border-t border-gray-100 pt-6">
                         <div class="flex space-x-4 mb-6">
                             <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
@@ -229,7 +260,8 @@ width: 100%;
                                     <h4 class="font-medium text-gray-800">John Doe</h4>
                                     <span class="text-xs text-gray-500">2 days ago</span>
                                 </div>
-                                <p class="text-gray-600 text-sm">Great lesson! I was wondering if there are any additional resources for exploring this topic further?</p>
+                                <p class="text-gray-600 text-sm">Great lesson! I was wondering if there are any
+                                    additional resources for exploring this topic further?</p>
                                 <div class="mt-3 flex items-center space-x-4 text-sm">
                                     <button class="text-gray-500 hover:text-gray-700 flex items-center">
                                         <i class="far fa-thumbs-up mr-1"></i> 5
@@ -238,7 +270,7 @@ width: 100%;
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="flex space-x-4 pl-14 mb-6">
                             <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
                                 <span class="font-medium text-green-500">AI</span>
@@ -248,7 +280,9 @@ width: 100%;
                                     <h4 class="font-medium text-gray-800">Instructor</h4>
                                     <span class="text-xs text-gray-500">1 day ago</span>
                                 </div>
-                                <p class="text-gray-600 text-sm">Hi John! Check out the additional resources section below the lesson where you'll find a cheatsheet and practice exercises to reinforce the concepts.</p>
+                                <p class="text-gray-600 text-sm">Hi John! Check out the additional resources section
+                                    below the lesson where you'll find a cheatsheet and practice exercises to reinforce
+                                    the concepts.</p>
                                 <div class="mt-3 flex items-center space-x-4 text-sm">
                                     <button class="text-gray-500 hover:text-gray-700 flex items-center">
                                         <i class="far fa-thumbs-up mr-1"></i> 2
@@ -259,7 +293,7 @@ width: 100%;
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="text-center">
                     <button class="text-green-600 hover:text-green-700 font-medium flex items-center mx-auto">
                         View All Comments <i class="fas fa-chevron-down ml-1"></i>
@@ -273,7 +307,8 @@ width: 100%;
 
     <!-- Interactive floating help button -->
     <div class="fixed bottom-8 right-8 z-50">
-        <button class="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-lg transition-all hover:scale-110">
+        <button
+            class="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-lg transition-all hover:scale-110">
             <i class="fas fa-question text-xl"></i>
         </button>
     </div>
@@ -291,7 +326,7 @@ width: 100%;
         document.addEventListener('DOMContentLoaded', () => {
             loadComponent('header.html', 'header-container');
             loadComponent('footer.html', 'footer-container');
-            
+
             // Simulated lesson content for preview
             // const lessonContent = document.getElementById('lesson-content');
             // const demoSections = [
@@ -321,35 +356,36 @@ width: 100%;
             //         </div>`
             //     }
             // ];
-            
+
             // // Render demo content
             // demoSections.forEach((section, index) => {
             //     const sectionDiv = document.createElement('div');
             //     sectionDiv.className = 'mb-12 section-animate p-4 rounded-lg';
             //     sectionDiv.id = `section-${index + 1}`;
-                
+
             //     const headingElement = document.createElement('h3');
             //     headingElement.className = 'text-2xl font-semibold mb-6 text-gray-800 flex items-center';
-                
+
             //     const iconElement = document.createElement('i');
             //     iconElement.className = index === 0 ? 'fas fa-flag-checkered mr-3 text-green-500' : 'fas fa-puzzle-piece mr-3 text-green-500';
             //     headingElement.appendChild(iconElement);
-                
+
             //     const textNode = document.createTextNode(section.heading);
             //     headingElement.appendChild(textNode);
-                
+
             //     sectionDiv.appendChild(headingElement);
-                
+
             //     const contentDiv = document.createElement('div');
             //     contentDiv.className = 'text-gray-700 leading-relaxed';
             //     contentDiv.innerHTML = section.content;
             //     sectionDiv.appendChild(contentDiv);
-                
+
             //     lessonContent.appendChild(sectionDiv);
             // });
-            
-          
+
+
         });
     </script>
 </body>
+
 </html>

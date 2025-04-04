@@ -1,4 +1,4 @@
-import { getCourseDetail } from '../api/api-call.js'; // Adjust the import path as necessary
+import { getCourseDetail } from '../api/api-call.js';  
 
 document.addEventListener('DOMContentLoaded', async () => {
  
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 leftContent.className = 'flex items-center';
                 
                 const lessonNumber = document.createElement('span');
-                lessonNumber.className = 'flex items-center justify-center w-8 h-8 mr-4 rounded-full bg-gray-100 text-gray-700 font-semibold group-hover:bg-green-100 group-hover:text-green-700 transition-colors duration-200';
+                lessonNumber.className = 'flex flex wrap items-center justify-center w-8 h-8 mr-4 rounded-full bg-gray-100 text-gray-700 font-semibold group-hover:bg-green-100 group-hover:text-green-700 transition-colors duration-200';
                 lessonNumber.textContent = (index + 1).toString().padStart(2, '0');
                 
                 const lessonTitle = document.createElement('span');
@@ -112,8 +112,8 @@ function renderRichText(richTextArray, container) {
             pElement.className = 'mb-4 text-gray-700';
             renderInlineText(block.children, pElement);
             container.appendChild(pElement);
-        } else if (block.type === 'heading') {
-            const level = block.level || 3;
+        } else if (block.type.startsWith('heading')) {
+            const level = parseInt(block.type.replace('heading', ''), 10) || 3;
             const headingElement = document.createElement(`h${level}`);
             const headingClasses = {
                 1: 'text-2xl font-bold text-gray-900 mb-4',
@@ -126,6 +126,11 @@ function renderRichText(richTextArray, container) {
             headingElement.className = headingClasses[level] || headingClasses[3];
             renderInlineText(block.children, headingElement);
             container.appendChild(headingElement);
+        } else if (block.type === 'blockquote') {
+            const blockquoteElement = document.createElement('blockquote');
+            blockquoteElement.className = 'border-l-4 border-gray-500 pl-4 italic text-gray-600 mb-4';
+            renderInlineText(block.children, blockquoteElement);
+            container.appendChild(blockquoteElement);
         } else if (block.type === 'list') {
             const listElement = document.createElement(block.format === 'ordered' ? 'ol' : 'ul');
             listElement.className = block.format === 'ordered' 
@@ -150,7 +155,6 @@ function renderRichText(richTextArray, container) {
             preElement.appendChild(codeElement);
             container.appendChild(preElement);
         }
-        // Add support for other block types as needed
     });
 }
 
@@ -166,15 +170,28 @@ function renderInlineText(childrenArray, parentElement) {
                 parentElement.appendChild(codeElement);
             } else {
                 let textNode = document.createTextNode(child.text);
-                
-                if (child.bold || child.italic || child.underline) {
+
+                if (child.bold || child.italic || child.underline || child.strikethrough || child.subscript || child.superscript) {
                     let textSpan = document.createElement('span');
                     textSpan.textContent = child.text;
-                    
+
                     if (child.bold) textSpan.classList.add('font-bold');
                     if (child.italic) textSpan.classList.add('italic');
                     if (child.underline) textSpan.classList.add('underline');
-                    
+                    if (child.strikethrough) textSpan.classList.add('line-through');
+                    if (child.subscript) {
+                        let sub = document.createElement('sub');
+                        sub.textContent = child.text;
+                        parentElement.appendChild(sub);
+                        return;
+                    }
+                    if (child.superscript) {
+                        let sup = document.createElement('sup');
+                        sup.textContent = child.text;
+                        parentElement.appendChild(sup);
+                        return;
+                    }
+
                     parentElement.appendChild(textSpan);
                 } else {
                     parentElement.appendChild(textNode);
@@ -189,6 +206,5 @@ function renderInlineText(childrenArray, parentElement) {
             renderInlineText(child.children, linkElement);
             parentElement.appendChild(linkElement);
         }
-        // Handle other inline types if needed
     });
 }
